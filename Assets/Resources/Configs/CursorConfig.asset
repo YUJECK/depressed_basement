@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125982fd6708482098e0b1042011aaf6, type: 3}
+  m_Name: CursorConfig
+  m_EditorClassIdentifier: 
+  <Default>k__BackingField:
+    Default: {fileID: 2800000, guid: 797ca87dc5f83eb41acd9c61d2c8a25f, type: 3}
+    OnClick: {fileID: 2800000, guid: 797ca87dc5f83eb41acd9c61d2c8a25f, type: 3}
+  <Fight>k__BackingField:
+    Default: {fileID: 2800000, guid: 7086f996e404ce04bb8f1b1c2efa6c31, type: 3}
+    OnClick: {fileID: 2800000, guid: 7086f996e404ce04bb8f1b1c2efa6c31, type: 3}
+  <Interaction>k__BackingField:
+    Default: {fileID: 2800000, guid: 7086f996e404ce04bb8f1b1c2efa6c31, type: 3}
+    OnClick: {fileID: 2800000, guid: 77cae50600a0df742b1c3b674be289da, type: 3}

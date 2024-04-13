@@ -14,6 +14,7 @@ namespace CodeBase.Inputs
         public static event Action OnLeftMouseButtonDown;
         public static event Action OnLeftMouseButtonUp;
         public static event Action OnInteracted;
+        public static event Action OnAttack;
         
         private static readonly Controls Controls;
         
@@ -24,8 +25,14 @@ namespace CodeBase.Inputs
             Controls.Global.LeftMouseButton.performed += RightMouseButtonPerformed;
             Controls.Global.LeftMouseButton.canceled += RightMouseButtonCanceled;
             Controls.Player.Interacted.performed += Interacted;
+            Controls.Player.Attack.performed += Attack;
             
             Controls.Enable();
+        }
+
+        private static void Attack(InputAction.CallbackContext obj)
+        {
+            OnAttack?.Invoke();
         }
 
         private static void Interacted(InputAction.CallbackContext context)

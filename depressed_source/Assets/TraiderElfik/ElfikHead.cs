@@ -1,5 +1,5 @@
 using CodeBase;
-using Player;
+using PlayerStuff;
 using UnityEngine;
 
 namespace TraiderElfik

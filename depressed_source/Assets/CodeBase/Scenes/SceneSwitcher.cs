@@ -11,14 +11,6 @@ namespace destructive_code.Scenes
         public static event Action<Scene, Scene> OnSceneLoaded; //prev/new
 
         private static readonly AsyncSceneLoader Loader = new();
-
-        public static GameplayScene TryGetGameplayScene()
-        {
-            if(CurrentScene is GameplayScene gameplayScene)
-                return CurrentScene as GameplayScene;
-
-            throw new TypeAccessException("CURRENT SCENE NOT GAMEPLAY");
-        }
         
         public static void SwitchTo<TScene>(TScene scene)
             where TScene : Scene
@@ -28,6 +20,7 @@ namespace destructive_code.Scenes
             CurrentScene?.Dispose();
             CurrentScene = scene;
             
+            scene.BeforeSceneLoaded();
             Loader.LoadScene(scene.GetSceneName(), () => Complete(scene));
         }
 
@@ -38,7 +31,7 @@ namespace destructive_code.Scenes
 
             Scene prevScene = CurrentScene;
 
-            scene.Load();
+            scene.OnLoaded();
 
             OnSceneLoaded?.Invoke(prevScene, scene);
         }

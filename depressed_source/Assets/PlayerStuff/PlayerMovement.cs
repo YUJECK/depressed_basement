@@ -10,17 +10,12 @@ namespace PlayerStuff
     {
         private Animator _animator;
         private static readonly int PlayerWalk = Animator.StringToHash("PlayerWalk");
-
-        private GameplayState _state;
-        private Player Player => _state.Player;
+        
+        private Player Player => SceneSwitcher.BasementScene.Player;
 
         private void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
-            
-            SceneSwitcher.CurrentScene.TryGetState(out GameplayState state);
-            
-            _state = state;
         }
 
         private void OnEnable()

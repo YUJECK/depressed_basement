@@ -1,8 +1,4 @@
-using System.Collections;
-using CodeBase.GameState;
-using CodeBase.Inputs;
 using CodeBase.Items;
-using destructive_code.Scenes;
 using Items.Knife;
 using PlayerStuff;
 using UnityEngine;

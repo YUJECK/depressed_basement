@@ -20,7 +20,13 @@ namespace PlayerStuff
         private void OnHit(Health health, HitData arg2)
         {
             if(health is PlayerHealth)
+            {
                 Shake(2, 0.2f);
+            }
+            else
+            {
+                Shake(1, 0.1f);
+            }
         }
 
         public async void Shake(float intensity, float time)

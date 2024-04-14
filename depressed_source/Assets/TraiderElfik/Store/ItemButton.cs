@@ -24,6 +24,7 @@ namespace TraiderElfik
         {
             _button = GetComponent<Button>();
             _image = GetComponent<Image>();
+            
             boughtImage.gameObject.SetActive(false);
             
             _button.onClick.AddListener(BuyItem);
@@ -31,17 +32,23 @@ namespace TraiderElfik
 
         private void BuyItem()
         {
-            if (SceneSwitcher.CurrentScene.TryGetState(out GameplayState state) && state.Money >= _currentWeapon.Cost && !boughtImage.gameObject.activeSelf)
+            var wallet = SceneSwitcher.BasementScene.Wallet;
+            
+            if (wallet.CanBuy(_currentWeapon.Cost) && !boughtImage.gameObject.activeSelf)
             {
                 AudioPlayer.Play("Pay");
                 boughtImage.gameObject.SetActive(true);
-                state.Money -= _currentWeapon.Cost;
-                state.Player.Equiper.Equip(_currentWeapon);    
+                
+                wallet.CashOut(_currentWeapon.Cost);
+                SceneSwitcher.BasementScene.Player.Equiper.Equip(_currentWeapon);    
             }
         }
 
         public void Connect(Weapon weapon)
         {
+            if(_image == null)
+                _image = GetComponent<Image>();
+                
             _image.sprite = weapon.Icon;
             _currentWeapon = weapon;
         }

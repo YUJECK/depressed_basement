@@ -1,4 +1,3 @@
-using System;
 using CodeBase.GameState;
 using destructive_code.Scenes;
 using TMPro;
@@ -14,8 +13,8 @@ namespace CodeBase.FightMiner
         private void Start()
         {
             _moneyScore = GetComponent<TMP_Text>();
-            SceneSwitcher.CurrentScene.TryGetState(out GameplayState gameplayState);
-            gameplayState.
+            SceneSwitcher.CurrentScene.TryGetState(out ShopState gameplayState);
+            
         }
         
         

@@ -26,11 +26,10 @@ namespace Items.Knife
         private void OnEnable()
         {
             InputsHandler.OnAttack += Attack;
-            SceneSwitcher.CurrentScene.TryGetState(out GameplayState state);
 
             hitOnTrigger = GetComponentInChildren<HitOnTrigger>(true);
             
-            _player = state.Player;
+            _player = SceneSwitcher.BasementScene.Player;
         }
 
         public override HitData GetHitData()

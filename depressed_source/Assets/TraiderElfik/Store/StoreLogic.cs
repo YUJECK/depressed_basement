@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using CodeBase;
 using CodeBase.Inputs;
@@ -9,6 +8,7 @@ using UnityEngine;
 
 namespace TraiderElfik
 {
+    [RequireComponent(typeof(StoreGUILayer))]
     public sealed class StoreLogic : DepressedBehaviour
     {
         [SerializeField] private ItemButton prefab;
@@ -16,8 +16,12 @@ namespace TraiderElfik
         
         [SerializeField] private List<Weapon> items;
 
+        private StoreGUILayer _layer;
+        
         private void Start()
         {
+            _layer = GetComponent<StoreGUILayer>();
+            
             foreach (var item in items)
             {
                 CreateItem(item);
@@ -31,11 +35,20 @@ namespace TraiderElfik
             
             button.Connect(weapon);
         }
-
+        
+        public void EnableStoreUI()
+        {
+            InputsHandler.EnterPlayerMode();
+            SceneSwitcher.CurrentScene.SceneGUI.OpenLayer(_layer);
+            
+            AudioPlayer.Play("StoreClick");
+        }
+        
         public void DisableStoreUI()
         {
-            gameObject.SetActive(false);
             InputsHandler.EnterPlayerMode();
+            SceneSwitcher.CurrentScene.SceneGUI.OpenLayer(SceneSwitcher.CurrentScene.SceneGUI.PreviousLayer);
+            
             AudioPlayer.Play("StoreClick");
         }
     }

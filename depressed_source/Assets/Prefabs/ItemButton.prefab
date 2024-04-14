@@ -121,19 +121,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6957092151653464449}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TraiderElfik.StoreLogic, Assembly-CSharp
-        m_MethodName: DisableStoreUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1378412977821655305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +147,7 @@ GameObject:
   - component: {fileID: 3618475868288247730}
   - component: {fileID: 5929295984619988832}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Bought
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using CodeBase.Helpers;
 using CodeBase.Hits;
@@ -46,13 +45,15 @@ public class CombatDummy : MonoBehaviour
         _animator.SetTrigger(AttackAnimTrigger);
 
         yield return new WaitForSeconds(0.2f);
+        _hitOnTrigger.Enabled = true;
 
-        _hitOnTrigger.Enabled = true;     
+        yield return new WaitForSeconds(0.5f);
         
-        yield return new WaitForSeconds(0.8f);
-
         _hitOnTrigger.Enabled = false;
         
+        yield return new WaitForSeconds(0.5f);
+
+
         _currentAttack = null;
     }
 }

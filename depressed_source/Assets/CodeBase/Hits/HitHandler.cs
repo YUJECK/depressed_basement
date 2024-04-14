@@ -21,6 +21,8 @@ namespace CodeBase.Hits
                     break;
             }
             
+            who.GeneralHitProcessor();
+            
             OnHit?.Invoke(who, from);
         }
     }

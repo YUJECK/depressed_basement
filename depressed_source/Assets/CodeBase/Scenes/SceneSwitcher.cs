@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace.MainGameplay;
 using Internal.Codebase.Infrastructure.Services.SceneLoader;    
 
 namespace destructive_code.Scenes
@@ -6,6 +7,7 @@ namespace destructive_code.Scenes
     public static class SceneSwitcher
     {
         public static Scene CurrentScene { get; private set; }
+        public static BasementScene BasementScene => CurrentScene as BasementScene;
  
         public static event Action<Scene> OnSceneStartedLoading; //prev
         public static event Action<Scene, Scene> OnSceneLoaded; //prev/new

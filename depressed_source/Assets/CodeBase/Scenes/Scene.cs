@@ -1,4 +1,5 @@
 using CodeBase.GameState;
+using CodeBase.GUIWindows;
 using UnityEngine;
 
 namespace destructive_code.Scenes
@@ -11,6 +12,7 @@ namespace destructive_code.Scenes
         public virtual GameObjectFabric Fabric { get; private set; } = new GameObjectFabric();
 
         public GameState State { get; protected set; }
+        public readonly SceneGUI SceneGUI = new SceneGUI();
 
         public bool TryGetState<TState>(out TState state)
             where TState : GameState
@@ -24,6 +26,7 @@ namespace destructive_code.Scenes
         {
             if(state == null) return;
             
+            State?.OnExit();
             State = state;
             state.OnAdded();
         }

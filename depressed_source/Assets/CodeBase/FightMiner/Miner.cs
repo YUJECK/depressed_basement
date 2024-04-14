@@ -1,5 +1,6 @@
 using System;
 using CodeBase.Hits;
+using destructive_code.Scenes;
 using PlayerStuff;
 
 namespace CodeBase.FightMiner
@@ -16,6 +17,8 @@ namespace CodeBase.FightMiner
 
         public void Stop()
         {
+            SceneSwitcher.BasementScene.Wallet.TopUp(Current);
+            
             HitHandler.OnHit -= OnHit;
         }
         

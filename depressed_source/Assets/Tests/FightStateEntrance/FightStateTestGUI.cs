@@ -1,4 +1,4 @@
-using CodeBase.GameState;
+using CodeBase.GameStates;
 using destructive_code.Scenes;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,9 +1,9 @@
-namespace CodeBase.GameState
+namespace CodeBase.GameStates
 {
     public abstract class GameState
     {
-        public virtual void OnAdded() {}
         public virtual void OnSceneLoaded() {}
-        public virtual void OnExit() {}
+        public virtual void Enter() {}
+        public virtual void Exit() {}
     }
 }

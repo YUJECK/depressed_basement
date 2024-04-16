@@ -1,6 +1,6 @@
 using System.Collections;
 using AutumnForest;
-using CodeBase.GameState;
+using CodeBase.GameStates;
 using CodeBase.Hits;
 using CodeBase.Inputs;
 using CodeBase.Items;

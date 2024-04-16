@@ -1,4 +1,4 @@
-using CodeBase.GameState;
+using CodeBase.GameStates;
 using destructive_code.Scenes;
 using PlayerStuff;
 using UnityEngine;
@@ -30,9 +30,6 @@ namespace DefaultNamespace.MainGameplay
         protected override void OnSceneLoaded()
         {
             Player = GameObject.FindObjectOfType<Player>();
-            PlayerHUD hud = GameObject.FindObjectOfType<PlayerHUD>();
-            
-            SceneGUI.OpenLayer(hud);
             
             State.OnSceneLoaded();
         }

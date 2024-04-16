@@ -1,3 +1,5 @@
+using CodeBase.Inputs;
+
 namespace CodeBase.GUIWindows
 {
     public sealed class SceneGUI
@@ -14,7 +16,16 @@ namespace CodeBase.GUIWindows
                 CurrentLayer.CloseLayer();
             
             layer.OpenLayer();
-            
+           
+            if(layer.DisablePlayerControls)
+            {
+                InputsHandler.EnterUIMode();
+            }
+            else
+            {
+                InputsHandler.EnterPlayerMode();
+            }
+
             CurrentLayer = layer;
         }
 
@@ -28,6 +39,11 @@ namespace CodeBase.GUIWindows
             CurrentLayer.CloseLayer();
             
             CurrentLayer = null;
+        }
+
+        public void BackToPrevious()
+        {
+            OpenLayer(PreviousLayer);
         }
     }
 }

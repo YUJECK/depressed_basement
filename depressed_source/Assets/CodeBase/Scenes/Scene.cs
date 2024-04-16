@@ -1,4 +1,5 @@
-using CodeBase.GameState;
+using System;
+using CodeBase.GameStates;
 using CodeBase.GUIWindows;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace destructive_code.Scenes
         public GameState State { get; protected set; }
         public readonly SceneGUI SceneGUI = new SceneGUI();
 
+        public event Action<GameState> OnEnteredState;
+
         public bool TryGetState<TState>(out TState state)
             where TState : GameState
         {
@@ -24,11 +27,13 @@ namespace destructive_code.Scenes
         
         public void UpdateGameStateTo(GameState state)
         {
-            if(state == null) return;
+            if(state == null || state == State) return;
             
-            State?.OnExit();
+            State?.Exit();
             State = state;
-            state.OnAdded();
+            state.Enter();
+            
+            OnEnteredState?.Invoke(state);
         }
         
         public virtual void BeforeSceneLoaded() {}

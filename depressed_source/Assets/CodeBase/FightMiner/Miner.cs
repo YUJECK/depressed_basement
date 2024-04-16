@@ -2,6 +2,7 @@ using System;
 using CodeBase.Hits;
 using destructive_code.Scenes;
 using PlayerStuff;
+using UnityEngine;
 
 namespace CodeBase.FightMiner
 {

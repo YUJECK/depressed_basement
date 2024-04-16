@@ -6,9 +6,11 @@ using UnityEngine;
 
 namespace CodeBase.GUIWindows
 {
-    public class GUILayer : MonoBehaviour
+    public abstract class GUILayer : MonoBehaviour
     {
         public bool LayerOpened { get; private set; }
+        
+        public abstract bool DisablePlayerControls { get; }
         
         private readonly List<GUIWindow> all = new List<GUIWindow>();
         private readonly List<GUIWindow> current = new List<GUIWindow>();

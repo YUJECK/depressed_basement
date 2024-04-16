@@ -6,6 +6,7 @@ namespace destructive_code.Scenes
 {
     public static class SceneSwitcher
     {
+        public static bool IsSceneLoaded { get; private set; }
         public static Scene CurrentScene { get; private set; }
         public static BasementScene BasementScene => CurrentScene as BasementScene;
  
@@ -17,8 +18,9 @@ namespace destructive_code.Scenes
         public static void SwitchTo<TScene>(TScene scene)
             where TScene : Scene
         {
+            IsSceneLoaded = false;
             OnSceneStartedLoading?.Invoke(CurrentScene);
-            
+
             CurrentScene?.Dispose();
             CurrentScene = scene;
             
@@ -35,6 +37,7 @@ namespace destructive_code.Scenes
 
             scene.OnLoaded();
 
+            IsSceneLoaded = true;
             OnSceneLoaded?.Invoke(prevScene, scene);
         }
 

@@ -1,13 +1,14 @@
-using System;
-using CodeBase.GameState;
 using CodeBase.Inputs;
 using destructive_code.Scenes;
+using destructive_code.Sounds;
 using UnityEngine;
 
 namespace PlayerStuff
 {
     public sealed class PlayerMovement : MonoBehaviour
     {
+        public string WalkSound;
+        
         private Animator _animator;
         private static readonly int PlayerWalk = Animator.StringToHash("PlayerWalk");
         
@@ -17,16 +18,7 @@ namespace PlayerStuff
         {
             _animator = GetComponentInChildren<Animator>();
         }
-
-        private void OnEnable()
-        {
-        }
-
-        private void OnDisable()
-        {
-            
-        }
-
+        
         private void Update()
         {
             if(Player.Stopped)
@@ -39,10 +31,12 @@ namespace PlayerStuff
             if (movemet != Vector2.zero)
             {
                 _animator.SetBool(PlayerWalk, true);
+                AudioPlayer.Play(WalkSound);
             }
             else
             {
                 _animator.SetBool(PlayerWalk, false);
+                AudioPlayer.Stop(WalkSound);
             }
 
             if(movemet.x < 0)

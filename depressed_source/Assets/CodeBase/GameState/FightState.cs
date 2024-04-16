@@ -1,20 +1,25 @@
 using CodeBase.FightMiner;
+using destructive_code.Scenes;
+using UnityEngine;
 
-namespace CodeBase.GameState
+namespace CodeBase.GameStates
 {
     public class FightState : GameState
     {
-        private Miner _miner;
+        public Miner Miner { get; private set; }
 
-        public override void OnAdded()
+        public override void Enter()
         {
-            _miner = new Miner();
-            _miner.Start();
+            var fightLayer = GameObject.FindObjectOfType<FightGUILayer>();
+            SceneSwitcher.CurrentScene.SceneGUI.OpenLayer(fightLayer);
+            
+            Miner = new Miner();
+            Miner.Start();
         }
 
-        public override void OnExit()
+        public override void Exit()
         {
-            _miner.Stop();
+            Miner.Stop();
         }
     }
 }

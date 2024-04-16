@@ -1,5 +1,5 @@
 using CodeBase;
-using CodeBase.GameState;
+using CodeBase.GameStates;
 using CodeBase.Items;
 using destructive_code.Scenes;
 using destructive_code.Sounds;

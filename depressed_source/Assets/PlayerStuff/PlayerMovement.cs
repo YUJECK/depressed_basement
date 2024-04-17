@@ -5,23 +5,25 @@ using UnityEngine;
 
 namespace PlayerStuff
 {
+    [RequireComponent(typeof(Player))]
     public sealed class PlayerMovement : MonoBehaviour
     {
         public string WalkSound;
         
         private Animator _animator;
         private static readonly int PlayerWalk = Animator.StringToHash("PlayerWalk");
-        
-        private Player Player => SceneSwitcher.BasementScene.Player;
+
+        private Player _player;
 
         private void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
+            _player = GetComponent<Player>();
         }
         
         private void Update()
         {
-            if(Player.Stopped)
+            if(_player.Stopped)
                 return;
             
             Vector2 movemet = InputsHandler.Movement;
@@ -31,12 +33,20 @@ namespace PlayerStuff
             if (movemet != Vector2.zero)
             {
                 _animator.SetBool(PlayerWalk, true);
-                AudioPlayer.Play(WalkSound);
+                
+                if(WalkSound != null)
+                {
+                    AudioPlayer.Play(WalkSound);
+                }
             }
             else
             {
                 _animator.SetBool(PlayerWalk, false);
-                AudioPlayer.Stop(WalkSound);
+                
+                if(WalkSound != null)
+                {
+                    AudioPlayer.Stop(WalkSound);
+                }
             }
 
             if(movemet.x < 0)

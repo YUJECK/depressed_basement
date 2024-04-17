@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DefaultNamespace.MainGameplay;
 using destructive_code.Scenes;
 using UnityEngine;
 
@@ -7,11 +8,15 @@ namespace CodeBase.Rooms
 {
     public class RoomSwitcher
     {
+        public Room CurrentRoom { get; private set; }
+        
         private readonly Dictionary<Type, Room> typeToRoom = new();
-
-        public RoomSwitcher(Transform roomsContainer)
+        private readonly BasementScene basementScene;
+        
+        public RoomSwitcher(Transform roomsContainer, BasementScene basementScene)
         {
             var rooms = roomsContainer.GetComponentsInChildren<Room>();
+            this.basementScene = basementScene;
 
             ParseToDictionary(rooms);
         }
@@ -29,9 +34,16 @@ namespace CodeBase.Rooms
         {
             if (typeToRoom.TryGetValue(typeof(TRoom), out var room))
             {
-                SceneSwitcher.BasementScene.Player.transform.position = room.StartPoint.position;
+                basementScene.Player.transform.position = room.StartPoint.position;
+                basementScene.Player.Movement.WalkSound = room.WalkSound;
                 
+                if(CurrentRoom != null)
+                    CurrentRoom.Camera.gameObject.SetActive(false);
                 
+                room.Camera.gameObject.SetActive(true);
+                
+                CurrentRoom = room;
+
             }
         }
     }

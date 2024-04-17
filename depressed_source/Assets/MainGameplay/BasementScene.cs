@@ -1,4 +1,6 @@
 using CodeBase.GameStates;
+using CodeBase.Rooms;
+using DefaultNamespace.Shop;
 using destructive_code.Scenes;
 using PlayerStuff;
 using UnityEngine;
@@ -9,7 +11,7 @@ namespace DefaultNamespace.MainGameplay
     {
         public PlayerWallet Wallet { get; private set; }
         public Player Player { get; private set; }
-        public CameraBrain CameraBrain { get; private set; }
+        public RoomSwitcher RoomSwitcher { get; private set; }
         
         public override string GetSceneName()
         {
@@ -29,9 +31,12 @@ namespace DefaultNamespace.MainGameplay
 
         protected override void OnSceneLoaded()
         {
+            RoomSwitcher = new RoomSwitcher(GameObject.FindObjectOfType<RoomsContainer>().transform, this);
+            
             Player = GameObject.FindObjectOfType<Player>();
             
             State.OnSceneLoaded();
+            SceneSwitcher.BasementScene.RoomSwitcher.SwitchTo<ShopRoom>();
         }
     }
 } 

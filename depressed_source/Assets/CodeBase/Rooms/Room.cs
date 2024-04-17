@@ -10,8 +10,8 @@ namespace CodeBase.Rooms
         [field: SerializeField] public string WalkSound { get; private set; }
         [field: SerializeField] public CinemachineVirtualCamera Camera { get; private set; }
 
-        public abstract void OnEnter(Player player);
+        public virtual void OnEnter(Player player) {}
 
-        public abstract void OnExit(Player player);
+        public virtual void OnExit(Player player) {}
     }
 }

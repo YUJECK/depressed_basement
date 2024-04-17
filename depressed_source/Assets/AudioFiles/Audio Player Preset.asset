@@ -25,3 +25,9 @@ MonoBehaviour:
     <Volume>k__BackingField: 1
     <Tags>k__BackingField: 
     <RandomizePitch>k__BackingField: 1
+  - <Name>k__BackingField: ShopSteps
+    <Clip>k__BackingField: {fileID: 8300000, guid: bb5f9989e68b2cc498482ea134d389a4, type: 3}
+    <Looped>k__BackingField: 1
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+    <RandomizePitch>k__BackingField: 1

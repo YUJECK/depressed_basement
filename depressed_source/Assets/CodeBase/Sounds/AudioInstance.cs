@@ -1,4 +1,3 @@
-using System;
 using AutumnForest;
 using UnityEngine;
 

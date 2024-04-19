@@ -1,8 +1,6 @@
-using Cinemachine;
 using CodeBase.Interactions;
 using DefaultNamespace.FightRoom;
-using destructive_code.Scenes;
-using UnityEngine;
+using destructive_code.Scenes;      
 
 public class DoorInteraction : Interaction
 {

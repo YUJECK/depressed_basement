@@ -1,3 +1,4 @@
+using Items.Knife;
 using PlayerStuff;
 using UnityEngine;
 
@@ -15,5 +16,7 @@ namespace CodeBase.Items
 
         public abstract void Equip(Player player);
         public abstract void Unequip(Player player);
+        
+        public abstract void StopCurrentAction();
     }
 }

@@ -23,6 +23,9 @@ namespace Items.Knife
         private Player _player;
         private HitOnTrigger hitOnTrigger;
 
+        private Vector3 _knifeStartPosition;
+        
+        
         private void OnEnable()
         {
             InputsHandler.OnAttack += Attack;
@@ -59,7 +62,7 @@ namespace Items.Knife
             
             var startTime = Time.time;
             var direction = transform.up;
-            Vector3 startPosition = transform.position;
+            _knifeStartPosition = transform.position;
             
             float effect = 5;
 
@@ -70,13 +73,25 @@ namespace Items.Knife
                 yield return new WaitForFixedUpdate();
             }
             
-            while (Vector3.Distance(transform.position, startPosition) > 0.01)
+            while (Vector3.Distance(transform.position, _knifeStartPosition) > 0.01)
             {
-                transform.position = Vector3.MoveTowards(transform.position, startPosition, (Time.deltaTime * speed));
+                transform.position = Vector3.MoveTowards(transform.position, _knifeStartPosition, (Time.deltaTime * speed));
                 yield return new WaitForFixedUpdate();
             }
 
-            transform.position = startPosition;
+            transform.position = _knifeStartPosition;
+            
+            _player.Stopped = false;
+            hitOnTrigger.Enabled = false;
+            currentAttack = false;
+        }
+
+        public void StopAttack()
+        {
+            if(!currentAttack)
+                return;
+            
+            transform.position = _knifeStartPosition;
             
             _player.Stopped = false;
             hitOnTrigger.Enabled = false;

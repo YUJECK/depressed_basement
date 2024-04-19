@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DefaultNamespace.MainGameplay;
 using destructive_code.Scenes;
+using destructive_code.Sounds;
 using UnityEngine;
 
 namespace CodeBase.Rooms
@@ -34,16 +35,26 @@ namespace CodeBase.Rooms
         {
             if (typeToRoom.TryGetValue(typeof(TRoom), out var room))
             {
+                basementScene.Player.Weapon.StopCurrentWeaponAction();
                 basementScene.Player.transform.position = room.StartPoint.position;
-                basementScene.Player.Movement.WalkSound = room.WalkSound;
                 
-                if(CurrentRoom != null)
-                    CurrentRoom.Camera.gameObject.SetActive(false);
-                
-                room.Camera.gameObject.SetActive(true);
-                
-                CurrentRoom = room;
+                if(basementScene.Player.Movement.WalkSound != "")
+                {
+                    AudioPlayer.Stop(basementScene.Player.Movement.WalkSound);
+                }
 
+                basementScene.Player.Movement.WalkSound = room.WalkSound;
+
+                if(CurrentRoom != null)
+                {
+                    CurrentRoom.Camera.gameObject.SetActive(false);
+                    room.OnExit(SceneSwitcher.BasementScene.Player);
+                }
+
+                room.Camera.gameObject.SetActive(true);
+
+                room.OnEnter(SceneSwitcher.BasementScene.Player);
+                CurrentRoom = room;
             }
         }
     }

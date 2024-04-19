@@ -7,7 +7,6 @@ namespace CodeBase.GUIWindows
         public GUILayer CurrentLayer { get; private set; }
         public GUILayer PreviousLayer { get; private set; }
         
-
         public void OpenLayer(GUILayer layer)
         {
             PreviousLayer = CurrentLayer;

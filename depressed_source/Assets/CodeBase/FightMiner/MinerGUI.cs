@@ -1,3 +1,4 @@
+using System.Collections;
 using CodeBase.GameStates;
 using CodeBase.GUIWindows;
 using destructive_code.Scenes;
@@ -7,21 +8,19 @@ using GUILayer = CodeBase.GUIWindows.GUILayer;
 
 namespace CodeBase.FightMiner
 {
-    [RequireComponent(typeof(TMP_Text))]
     public sealed class MinerGUI : GUIWindow
     {
-        private TMP_Text _moneyScore;
+        [SerializeField] private TMP_Text timer;
+        [SerializeField] private TMP_Text moneyScore;
+        
+        private bool _timerEnabled;
 
         protected override void OnThisOpened(GUILayer layer)
         {
             base.OnThisOpened(layer);
-
-            if(_moneyScore == null)
-            {
-                _moneyScore = GetComponent<TMP_Text>();
-            }
-
-            _moneyScore.text = "0";
+            
+            moneyScore.text = "0";
+            
             SceneSwitcher.CurrentScene.OnEnteredState += EnteredState;
         }
 
@@ -29,17 +28,40 @@ namespace CodeBase.FightMiner
         {
             base.OnThisClosed(layer);
             
-            if(SceneSwitcher.CurrentScene.TryGetState(out FightState state)) 
+            if(SceneSwitcher.CurrentScene.TryGetState(out FightState state))
+            {
                 state.Miner.OnChanged -= OnChanged;
+                _timerEnabled = false;
+            }
         }
 
         private void EnteredState(GameState state)
         {
             if (state is FightState fightState)
+            {
                 fightState.Miner.OnChanged += OnChanged;
+                
+                StartCoroutine(Timer());
+            }
+        }
+
+        private IEnumerator Timer()
+        {
+            _timerEnabled = true;
+            
+            timer.text = "0";
+            int timerTime = 0;
+            
+            while (_timerEnabled)
+            {
+                yield return new WaitForSeconds(1);
+                
+                timerTime += 1;
+                timer.text = timerTime.ToString();
+            }
         }
 
         private void OnChanged(int score)
-            => _moneyScore.text = score.ToString();
+            => moneyScore.text = score.ToString();
     }
 }

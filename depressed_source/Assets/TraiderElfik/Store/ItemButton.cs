@@ -40,7 +40,7 @@ namespace TraiderElfik
                 boughtImage.gameObject.SetActive(true);
                 
                 wallet.CashOut(_currentWeapon.Cost);
-                SceneSwitcher.BasementScene.Player.Equiper.Equip(_currentWeapon);    
+                SceneSwitcher.BasementScene.Player.Weapon.Equip(_currentWeapon);    
             }
         }
 

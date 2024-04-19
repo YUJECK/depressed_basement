@@ -31,3 +31,9 @@ MonoBehaviour:
     <Volume>k__BackingField: 1
     <Tags>k__BackingField: 
     <RandomizePitch>k__BackingField: 1
+  - <Name>k__BackingField: DirtSteps
+    <Clip>k__BackingField: {fileID: 8300000, guid: 46ef667a80d87b7489349497755d0d14, type: 3}
+    <Looped>k__BackingField: 1
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+    <RandomizePitch>k__BackingField: 1

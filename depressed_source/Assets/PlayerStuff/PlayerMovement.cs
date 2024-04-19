@@ -1,5 +1,4 @@
 using CodeBase.Inputs;
-using destructive_code.Scenes;
 using destructive_code.Sounds;
 using UnityEngine;
 
@@ -34,7 +33,7 @@ namespace PlayerStuff
             {
                 _animator.SetBool(PlayerWalk, true);
                 
-                if(WalkSound != null)
+                if(WalkSound != null && !AudioPlayer.IsPlaying(WalkSound))
                 {
                     AudioPlayer.Play(WalkSound);
                 }

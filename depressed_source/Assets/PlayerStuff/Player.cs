@@ -7,13 +7,13 @@ namespace PlayerStuff
     [RequireComponent(typeof(PlayerWeapon))]
     public class Player : DepressedBehaviour
     {
-        public PlayerWeapon Equiper { get; private set; }
+        public PlayerWeapon Weapon { get; private set; }
         public PlayerMovement Movement { get; private set; }
         public bool Stopped { get; set; } = false;
 
         private void Awake()
         {
-            Equiper = GetComponent<PlayerWeapon>();
+            Weapon = GetComponent<PlayerWeapon>();
             Movement = GetComponent<PlayerMovement>();
         }
     }

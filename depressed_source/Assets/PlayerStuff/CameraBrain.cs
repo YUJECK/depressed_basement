@@ -9,6 +9,9 @@ namespace PlayerStuff
     [RequireComponent(typeof(CinemachineVirtualCamera))]
     public sealed class CameraBrain : MonoBehaviour
     {
+        [SerializeField] private NoiseSettings idleNoise;
+        [SerializeField] private NoiseSettings hitNoise;
+
         private CinemachineVirtualCamera _virtualCamera;
 
         private void Start()
@@ -33,11 +36,15 @@ namespace PlayerStuff
         {
             var shake = _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
+            shake.m_NoiseProfile = hitNoise;
             shake.m_AmplitudeGain = intensity;
+            shake.m_FrequencyGain = 2;
 
             await UniTask.Delay(TimeSpan.FromSeconds(time));
-            
-            shake.m_AmplitudeGain = 0;
+
+            shake.m_NoiseProfile = idleNoise;
+            shake.m_AmplitudeGain = 0.3f;
+            shake.m_FrequencyGain = 1;
         }
     }
 }

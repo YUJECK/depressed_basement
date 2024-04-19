@@ -15,6 +15,12 @@ namespace PlayerStuff
             _player = GetComponent<Player>();
         }
 
+        public void StopCurrentWeaponAction()
+        {
+            if(current != null)
+                current.StopCurrentAction();
+        }
+
         public void Equip(Weapon weapon)
         {
             if(current != null)

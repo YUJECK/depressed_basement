@@ -15,6 +15,9 @@ namespace CodeBase.GUIWindows
         private readonly List<GUIWindow> all = new List<GUIWindow>();
         private readonly List<GUIWindow> current = new List<GUIWindow>();
 
+        protected virtual void OnLayerOpened() {}
+        protected virtual void OnLayerClosed() {}
+        
         private void Start()
         {
             var windows = GetComponentsInChildren<GUIWindow>(true);
@@ -35,6 +38,8 @@ namespace CodeBase.GUIWindows
             {
                 OpenWindow(window);
             }
+            
+            OnLayerOpened();
         }
 
         public void CloseLayer()
@@ -45,6 +50,7 @@ namespace CodeBase.GUIWindows
             }
             
             LayerOpened = false;
+            OnLayerClosed();
         }
 
         public void AddWindow(GUIWindow window)
@@ -67,13 +73,13 @@ namespace CodeBase.GUIWindows
             if(!all.Contains(window))
                 AddWindow(window);
             
+            window.gameObject.SetActive(true);
+            
             Type guiWindowType = typeof(GUIWindow);
             
             guiWindowType
                 .GetMethod("OnThisOpened", BindingFlags.Instance | BindingFlags.NonPublic)?
                 .Invoke(window, new object[] { this });
-
-            window.gameObject.SetActive(true);
 
             var onOpenedCallback = guiWindowType.GetMethod("OnOtherOpened", BindingFlags.Instance | BindingFlags.NonPublic);
             

@@ -3,7 +3,7 @@ using CodeBase.Rooms;
 using destructive_code.Scenes;
 using PlayerStuff;
 
-namespace DefaultNamespace.Shop
+namespace Shop
 {
     public sealed class ShopRoom : Room
     {

@@ -1,6 +1,6 @@
 using CodeBase.GameStates;
 using CodeBase.Rooms;
-using DefaultNamespace.Shop;
+using Shop;
 using destructive_code.Scenes;
 using PlayerStuff;
 using UnityEngine;
@@ -11,11 +11,12 @@ namespace DefaultNamespace.MainGameplay
     {
         public PlayerWallet Wallet { get; private set; }
         public Player Player { get; private set; }
+        public CheckMachine CheckMachine { get; private set; }
         public RoomSwitcher RoomSwitcher { get; private set; }
         
         public override string GetSceneName()
         {
-            return "SampleScene";
+            return "BasementScene";
         }
 
         public override Camera GetCamera()
@@ -25,7 +26,7 @@ namespace DefaultNamespace.MainGameplay
 
         public override void BeforeSceneLoaded()
         {
-            Wallet = new PlayerWallet(100);
+            Wallet = new PlayerWallet(20);
             UpdateGameStateTo(new ShopState());
         }
 
@@ -34,6 +35,7 @@ namespace DefaultNamespace.MainGameplay
             RoomSwitcher = new RoomSwitcher(GameObject.FindObjectOfType<RoomsContainer>().transform, this);
             
             Player = GameObject.FindObjectOfType<Player>();
+            CheckMachine = GameObject.FindObjectOfType<CheckMachine>();
             
             State.OnSceneLoaded();
             SceneSwitcher.BasementScene.RoomSwitcher.SwitchTo<ShopRoom>();

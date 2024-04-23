@@ -3,7 +3,7 @@ using CodeBase.Rooms;
 using destructive_code.Scenes;
 using PlayerStuff;
 
-namespace DefaultNamespace.FightRoom
+namespace FightRoomCode
 {
     public sealed class FightRoom : Room
     {

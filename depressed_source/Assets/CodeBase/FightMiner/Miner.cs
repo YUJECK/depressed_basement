@@ -1,6 +1,7 @@
 using System;
 using CodeBase.Hits;
 using destructive_code.Scenes;
+using FightRoomCode;
 using PlayerStuff;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace CodeBase.FightMiner
 
         public void Stop()
         {
-            SceneSwitcher.BasementScene.Wallet.TopUp(Current);
+            SceneSwitcher.BasementScene.CheckMachine.PushCheck(new FightCheck(Current));
             
             HitHandler.OnHit -= OnHit;
         }

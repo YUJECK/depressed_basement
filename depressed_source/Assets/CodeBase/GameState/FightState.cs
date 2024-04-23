@@ -1,7 +1,7 @@
 using System;
 using CodeBase.FightMiner;
 using Cysharp.Threading.Tasks;
-using DefaultNamespace.Shop;
+using Shop;
 using destructive_code.Scenes;
 using UnityEngine;
 
@@ -31,8 +31,6 @@ namespace CodeBase.GameStates
             Miner.Start();
 
             await UniTask.Delay(TimeSpan.FromSeconds(_duration));
-            
-            Miner.Stop();
             
             SceneSwitcher.BasementScene.RoomSwitcher.SwitchTo<ShopRoom>();
         }

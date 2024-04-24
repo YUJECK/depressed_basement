@@ -7,6 +7,7 @@ namespace CodeBase.Rooms
     public abstract class Room : MonoBehaviour
     {
         [field: SerializeField] public Transform StartPoint { get; private set; }
+        [field: SerializeField] public string DoorSound { get; private set; }
         [field: SerializeField] public string WalkSound { get; private set; }
         [field: SerializeField] public CinemachineVirtualCamera Camera { get; private set; }
 

@@ -37,3 +37,9 @@ MonoBehaviour:
     <Volume>k__BackingField: 1
     <Tags>k__BackingField: 
     <RandomizePitch>k__BackingField: 1
+  - <Name>k__BackingField: FightRoomDoor
+    <Clip>k__BackingField: {fileID: 8300000, guid: b7d7f55e75b2a44498904a876f352134, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+    <RandomizePitch>k__BackingField: 1

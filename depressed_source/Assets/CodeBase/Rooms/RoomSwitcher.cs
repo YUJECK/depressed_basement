@@ -53,6 +53,9 @@ namespace CodeBase.Rooms
 
                 room.Camera.gameObject.SetActive(true);
 
+                if(room.DoorSound != "")
+                    AudioPlayer.Play(room.DoorSound);
+                
                 room.OnEnter(SceneSwitcher.BasementScene.Player);
                 CurrentRoom = room;
             }

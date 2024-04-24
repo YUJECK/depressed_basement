@@ -6523,6 +6523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <StartPoint>k__BackingField: {fileID: 1122053412}
+  <DoorSound>k__BackingField: FightRoomDoor
   <WalkSound>k__BackingField: ShopSteps
   <Camera>k__BackingField: {fileID: 1065097079}
 --- !u!1 &111364022
@@ -14046,7 +14047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25.1, y: 9.3}
+  m_AnchoredPosition: {x: 3.8, y: 14.6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &337692266
@@ -14069,7 +14070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <-
+  m_text: X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed4d338a65fb2994a83f1da1f3336ecd, type: 2}
   m_sharedMaterial: {fileID: 1950006129461059174, guid: ed4d338a65fb2994a83f1da1f3336ecd, type: 2}
@@ -14096,8 +14097,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14132,7 +14133,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -66.69691, z: 0, w: 0}
+  m_margin: {x: 0, y: -14.407871, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -22816,6 +22817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <StartPoint>k__BackingField: {fileID: 632210644}
+  <DoorSound>k__BackingField: FightRoomDoor
   <WalkSound>k__BackingField: DirtSteps
   <Camera>k__BackingField: {fileID: 1327994979}
 --- !u!1 &712280124
@@ -23365,6 +23367,7 @@ GameObject:
   - component: {fileID: 763141855}
   - component: {fileID: 763141853}
   - component: {fileID: 763141856}
+  - component: {fileID: 763141857}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -23389,8 +23392,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80, y: -60}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -83.3, y: -57.1}
+  m_SizeDelta: {x: 99.2523, y: 46.345}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763141853
 MonoBehaviour:
@@ -23432,7 +23435,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 763141857}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -23468,6 +23471,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35e7ecc77ee1bd428d2d1f210ac3305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &763141857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763141851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 42cc61142fceb9f4eb1742b9ce5515d5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &772456872
 GameObject:
   m_ObjectHideFlags: 0

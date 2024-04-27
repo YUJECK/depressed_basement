@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb319990c884dfb9d710768d2147f11, type: 3}
+  m_Name: Audio Player Preset
+  m_EditorClassIdentifier: 
+  audios:
+  - <Name>k__BackingField: StoreClick
+    <Clip>k__BackingField: {fileID: 8300000, guid: a8b5758712497b24db6f5a9c77b17271, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+    <RandomizePitch>k__BackingField: 1
+  - <Name>k__BackingField: Pay
+    <Clip>k__BackingField: {fileID: 8300000, guid: 5ae371a8fb8639149817ea707546ee43, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+    <RandomizePitch>k__BackingField: 1
+  - <Name>k__BackingField: ShopSteps
+    <Clip>k__BackingField: {fileID: 8300000, guid: bb5f9989e68b2cc498482ea134d389a4, type: 3}
+    <Looped>k__BackingField: 1
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+    <RandomizePitch>k__BackingField: 1
+  - <Name>k__BackingField: DirtSteps
+    <Clip>k__BackingField: {fileID: 8300000, guid: 46ef667a80d87b7489349497755d0d14, type: 3}
+    <Looped>k__BackingField: 1
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+    <RandomizePitch>k__BackingField: 1
+  - <Name>k__BackingField: FightRoomDoor
+    <Clip>k__BackingField: {fileID: 8300000, guid: b7d7f55e75b2a44498904a876f352134, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+    <RandomizePitch>k__BackingField: 1

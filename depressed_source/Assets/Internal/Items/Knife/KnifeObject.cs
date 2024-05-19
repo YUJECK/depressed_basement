@@ -12,27 +12,29 @@ namespace Items.Knife
 {
     public sealed class KnifeObject : WeaponObject
     {
+        [Header("Stats")]
         [SerializeField] private BladeHitData data;
-        
         [SerializeField] private float speed;
         [SerializeField] private float duration;
 
+        [Header("Other")]
         [SerializeField] private PitchedAudio attackSound;
+        [SerializeField] private Transform knifeDefaultPoint;
 
-        private bool currentAttack = false;
-        private Player _player;
+        private Player player;
         private HitOnTrigger hitOnTrigger;
 
-        private Vector3 _knifeStartPosition;
-        
-        
+
+        private bool CurrentAttack => knifeAttackRoutine != null;
+        private Coroutine knifeAttackRoutine;
+
         private void OnEnable()
         {
             InputsHandler.OnAttack += Attack;
 
             hitOnTrigger = GetComponentInChildren<HitOnTrigger>(true);
             
-            _player = SceneSwitcher.BasementScene.Player;
+            player = SceneSwitcher.BasementScene.Player;
         }
 
         public override HitData GetHitData()
@@ -47,22 +49,20 @@ namespace Items.Knife
 
         private void Attack()
         {
-            if(currentAttack)
+            if(CurrentAttack)
                 return;
             
-            StartCoroutine(Animation());
+            knifeAttackRoutine = StartCoroutine(Animation());
         }
 
         private IEnumerator Animation()
         {
-            currentAttack = true;
-            _player.Stopped = true;
+            player.Stopped = true;
             hitOnTrigger.Enabled = true;
             attackSound.Play();
             
             var startTime = Time.time;
             var direction = transform.up;
-            _knifeStartPosition = transform.position;
             
             float effect = 5;
 
@@ -73,29 +73,32 @@ namespace Items.Knife
                 yield return new WaitForFixedUpdate();
             }
             
-            while (Vector3.Distance(transform.position, _knifeStartPosition) > 0.01)
+            while (Vector3.Distance(transform.position, knifeDefaultPoint.position) > 0.01)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _knifeStartPosition, (Time.deltaTime * speed));
+                transform.position = Vector3.MoveTowards(transform.position, knifeDefaultPoint.position, (Time.deltaTime * speed));
                 yield return new WaitForFixedUpdate();
             }
 
-            transform.position = _knifeStartPosition;
+            transform.position = knifeDefaultPoint.position;
             
-            _player.Stopped = false;
+            player.Stopped = false;
             hitOnTrigger.Enabled = false;
-            currentAttack = false;
+
+            knifeAttackRoutine = null;
         }
 
         public void StopAttack()
         {
-            if(!currentAttack)
+            if(!CurrentAttack)
                 return;
             
-            transform.position = _knifeStartPosition;
+            StopCoroutine(knifeAttackRoutine);
+            knifeAttackRoutine = null;
             
-            _player.Stopped = false;
+            transform.position = knifeDefaultPoint.position;
+            
+            player.Stopped = false;
             hitOnTrigger.Enabled = false;
-            currentAttack = false;
         }
     }
 }

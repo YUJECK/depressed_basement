@@ -16,5 +16,6 @@ namespace CodeBase.Hits
         
         public abstract void TakeHitFromBlade(BladeHitData hitData);
         public abstract void TakeHitFromBullet(BulletHitData hitData);
+        public abstract void TakeHitFromTouch(TouchHitData hitData);
     }
 }

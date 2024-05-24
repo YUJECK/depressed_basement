@@ -20,6 +20,14 @@ namespace PlayerStuff
             Debug.Log("Bullet");
         }
 
+        public override void TakeHitFromTouch(TouchHitData hitData)
+        {
+            Debug.Log("To" +
+                      "" +
+                      "uch");
+            GeneralHitProcessor();
+        }
+
         public override void GeneralHitProcessor()
         {
             base.GeneralHitProcessor();

@@ -1,4 +1,3 @@
-using Items.Knife;
 using PlayerStuff;
 using UnityEngine;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using AutumnForest;
 using CodeBase.GameStates;
@@ -10,6 +11,7 @@ using UnityEngine;
 
 namespace Items.Knife
 {
+    [RequireComponent(typeof(HitOnTrigger))]
     public sealed class KnifeObject : WeaponObject
     {
         [Header("Stats")]
@@ -23,10 +25,14 @@ namespace Items.Knife
 
         private Player player;
         private HitOnTrigger hitOnTrigger;
-
-
+        
         private bool CurrentAttack => knifeAttackRoutine != null;
         private Coroutine knifeAttackRoutine;
+
+        private void Start()
+        {
+            GetComponent<HitOnTrigger>().AddExclude<PlayerHealth>();
+        }
 
         private void OnEnable()
         {

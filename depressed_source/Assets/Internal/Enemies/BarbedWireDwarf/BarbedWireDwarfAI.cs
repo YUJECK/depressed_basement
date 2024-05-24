@@ -4,8 +4,8 @@ using UnityEngine.AI;
 
 namespace Enemies
 {
-    [RequireComponent(typeof(SpikyDwarfAI))]
-    public class SpikyDwarfAI : MonoBehaviour
+    [RequireComponent(typeof(BarbedWireDwarfAI))]
+    public class BarbedWireDwarfAI : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
         

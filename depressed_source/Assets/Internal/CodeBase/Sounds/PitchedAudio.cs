@@ -7,8 +7,8 @@ namespace AutumnForest
     {
         [field: SerializeField] public AudioSource AudioSource { get; private set; }
 
-        [SerializeField] private float minPitch = 0.8f;
-        [SerializeField] private float maxPitch = 1.2f;
+        public float minPitch = 0.8f;
+        public float maxPitch = 1.2f;
 
         public PitchedAudio(AudioSource audioSource, float minPitch = 0.8f, float maxPitch = 1.2f)
         {

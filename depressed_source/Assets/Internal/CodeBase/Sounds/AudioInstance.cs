@@ -53,7 +53,7 @@ namespace destructive_code.Sounds
             }   
         }
         
-        //data conrtoling
+        //data control
         
         public void SetData(AudioData data)
         {
@@ -63,6 +63,7 @@ namespace destructive_code.Sounds
             gameObject.name = data.Name;
             AudioData = data;
             Source.clip = data.Clip;
+            Source.outputAudioMixerGroup = data.Output;
 
             if (data.RandomizePitch)
             {

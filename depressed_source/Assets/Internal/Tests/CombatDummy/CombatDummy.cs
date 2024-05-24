@@ -11,14 +11,14 @@ public class CombatDummy : MonoBehaviour
     private Animator _animator;
 
     private Coroutine _currentAttack;
-    private HitOnTrigger _hitOnTrigger;
+    private HitOnTrigger hitOnTrigger;
     
     private static readonly int AttackAnimTrigger = Animator.StringToHash("Attack");
 
     private void Start()
     {
         _trigger = GetComponentInChildren<TriggerHandler>();
-        _hitOnTrigger = GetComponentInChildren<HitOnTrigger>();
+        hitOnTrigger = GetComponentInChildren<HitOnTrigger>();
         _animator = GetComponent<Animator>();
         
         _trigger.OnEnter += Attack;
@@ -45,11 +45,11 @@ public class CombatDummy : MonoBehaviour
         _animator.SetTrigger(AttackAnimTrigger);
 
         yield return new WaitForSeconds(0.2f);
-        _hitOnTrigger.Enabled = true;
+        hitOnTrigger.Enabled = true;
 
         yield return new WaitForSeconds(0.5f);
         
-        _hitOnTrigger.Enabled = false;
+        hitOnTrigger.Enabled = false;
         
         yield return new WaitForSeconds(0.5f);
 

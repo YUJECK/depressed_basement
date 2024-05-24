@@ -33,5 +33,10 @@ namespace CodeBase.Hits
             
             _animator.SetTrigger("DummyHit");
         }
+
+        public override void TakeHitFromTouch(TouchHitData hitData)
+        {
+            
+        }
     }
 }

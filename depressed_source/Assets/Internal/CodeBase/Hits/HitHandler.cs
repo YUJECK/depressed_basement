@@ -19,6 +19,9 @@ namespace CodeBase.Hits
                 case BulletHitData bullet:
                     who.TakeHitFromBullet(bullet);
                     break;
+                case TouchHitData touch:
+                    who.TakeHitFromTouch(touch);
+                    break;
             }
             
             who.GeneralHitProcessor();

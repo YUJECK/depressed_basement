@@ -42,7 +42,7 @@ namespace PlayerStuff
             {
                 _animator.SetBool(PlayerWalk, false);
                 
-                if(WalkSound != null)
+                if(WalkSound != "")
                 {
                     AudioPlayer.Stop(WalkSound);
                 }

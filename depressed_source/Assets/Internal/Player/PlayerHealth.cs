@@ -12,25 +12,22 @@ namespace PlayerStuff
         
         public override void TakeHitFromBlade(BladeHitData hitData)
         {
-            Debug.Log("Blade");
+            GeneralHitProcessor(hitData);
         }
         
         public override void TakeHitFromBullet(BulletHitData hitData)
         {
-            Debug.Log("Bullet");
+            GeneralHitProcessor(hitData);
         }
 
         public override void TakeHitFromTouch(TouchHitData hitData)
         {
-            Debug.Log("To" +
-                      "" +
-                      "uch");
-            GeneralHitProcessor();
+            GeneralHitProcessor(hitData);
         }
 
-        public override void GeneralHitProcessor()
+        public override void GeneralHitProcessor(HitData data)
         {
-            base.GeneralHitProcessor();
+            base.GeneralHitProcessor(data);
             
             if (CanBeHit)
             {

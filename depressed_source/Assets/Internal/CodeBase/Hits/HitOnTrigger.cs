@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using CodeBase.Items;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CodeBase.Hits
 {
@@ -9,9 +10,15 @@ namespace CodeBase.Hits
     [RequireComponent(typeof(WeaponObject))]
     public sealed class HitOnTrigger : MonoBehaviour
     {
-        public bool Enabled;
+        [SerializeField] private UnityEvent OnHitEditor = new();
+        
+        [Header("Settings")]
+        public bool Enabled = true;
         public bool DisableOnHit;
 
+        //other
+        public event Action<Health> OnHit;
+        
         private WeaponObject weaponObject;
         private List<Type> excludeList = new List<Type>();
         
@@ -25,6 +32,9 @@ namespace CodeBase.Hits
             if (Enabled && other.TryGetComponent(out Health health) && !excludeList.Contains(health.GetType()))
             {
                 HitHandler.Hit(weaponObject.GetHitData(), health);
+                
+                OnHitEditor.Invoke();
+                OnHit?.Invoke(health);
 
                 if (DisableOnHit)
                 {

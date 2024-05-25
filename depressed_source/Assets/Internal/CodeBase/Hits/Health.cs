@@ -9,7 +9,7 @@ namespace CodeBase.Hits
         
         public event Action OnHit;
 
-        public virtual void GeneralHitProcessor()
+        public virtual void GeneralHitProcessor(HitData data)
         {
             OnHit?.Invoke();
         }

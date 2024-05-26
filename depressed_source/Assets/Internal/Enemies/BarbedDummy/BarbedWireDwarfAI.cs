@@ -1,11 +1,12 @@
 using Internal.CodeBase.Enemies;
+using Internal.Enemies;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Enemies
 {
     [RequireComponent(typeof(BarbedWireDwarfAI))]
-    public class BarbedWireDwarfAI : MonoBehaviour
+    public class BarbedWireDwarfAI : Enemy
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
         

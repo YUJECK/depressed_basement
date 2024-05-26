@@ -30,6 +30,12 @@ namespace CodeBase.Rooms
             }
         }
 
+        public TRoom Get<TRoom>()
+            where TRoom : Room
+        {
+            return typeToRoom[typeof(TRoom)] as TRoom;
+        }
+
         public void SwitchTo<TRoom>()
             where TRoom : Room
         {

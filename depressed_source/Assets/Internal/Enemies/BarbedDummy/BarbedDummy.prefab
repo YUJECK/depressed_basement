@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8677850922139732875}
   - component: {fileID: 9070826362375645182}
   - component: {fileID: 6714866673332736700}
+  - component: {fileID: 7467912762975440915}
   m_Layer: 6
   m_Name: Hitbox
   m_TagString: Untagged
@@ -110,6 +111,20 @@ MonoBehaviour:
         m_CallState: 2
   Enabled: 1
   DisableOnHit: 0
+--- !u!114 &7467912762975440915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465275600508731295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d2ed454aa8441a94453f8259305530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plushSprite: {fileID: 0}
+  ripped: {fileID: 0}
 --- !u!1 &1531636379574828923
 GameObject:
   m_ObjectHideFlags: 0

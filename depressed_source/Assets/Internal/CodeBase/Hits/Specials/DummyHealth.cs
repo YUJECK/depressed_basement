@@ -1,42 +1,47 @@
+using destructive_code.Scenes;
+using FightRoomCode;
+using Internal.Enemies;
 using UnityEngine;
 
 namespace CodeBase.Hits
 {
     public class DummyHealth : Health
     {
-        [SerializeField] private SpriteRenderer plushSprite;
-        [SerializeField] private AudioSource ripped;
         private Animator _animator;
+        private Enemy enemy;
         
         private void Start()
         {
             _animator = GetComponentInParent<Animator>();
+            enemy = GetComponentInParent<Enemy>();
         }
-        
+
+        public override void GeneralHitProcessor(HitData data)
+        {
+            base.GeneralHitProcessor(data);
+            
+            Hits += data.Damage;            
+            //_animator.SetTrigger("DummyHit");
+
+            if(Hits > 4)
+            {
+                SceneSwitcher.CurrentScene.Fabric.Destroy(enemy.gameObject);
+            }
+        }
+
         public override void TakeHitFromBlade(BladeHitData hitData)
         {
-            Hits++;
-            
-            _animator.SetTrigger("DummyHit");
-
-            if (Hits > 3)
-            {
-                plushSprite.gameObject.SetActive(true);
-                ripped.Play();
-            }
-                
+            GeneralHitProcessor(hitData);
         }
         
         public override void TakeHitFromBullet(BulletHitData hitData)
         {
-            Hits++;
-            
-            _animator.SetTrigger("DummyHit");
+            GeneralHitProcessor(hitData);
         }
 
         public override void TakeHitFromTouch(TouchHitData hitData)
         {
-            
+            GeneralHitProcessor(hitData);
         }
     }
 }

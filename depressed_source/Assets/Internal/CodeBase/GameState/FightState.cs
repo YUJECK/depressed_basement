@@ -4,6 +4,7 @@ using CodeBase.FightMiner;
 using Cysharp.Threading.Tasks;
 using Shop;
 using destructive_code.Scenes;
+using FightRoomCode;
 using Internal.Enemies;
 using UnityEngine;
 
@@ -16,10 +17,13 @@ namespace CodeBase.GameStates
         
         private readonly float duration;
         private readonly List<Enemy> currentEnemies = new();
+
+        private TempObjectsContainer container;
         
-        public FightState(float duration)
+        public FightState(float duration, TempObjectsContainer container)
         {
             this.duration = duration;
+            this.container = container;
         }
 
         public override void Enter()
@@ -67,9 +71,16 @@ namespace CodeBase.GameStates
 
         private void ClearEnemies()
         {
-            while(currentEnemies.Count > 0)
+            List<GameObject> gameObjects = new List<GameObject>();
+            
+            for (int i = 0; i < container.transform.childCount; i++)
             {
-                SceneSwitcher.CurrentScene.Fabric.Destroy(currentEnemies[0].gameObject);
+                gameObjects.Add(container.transform.GetChild(i).gameObject);
+            }
+
+            for (int i = 0; i < gameObjects.Count; i++)
+            {
+                SceneSwitcher.CurrentScene.Fabric.Destroy(gameObjects[i]);
             }
 
             currentEnemies.Clear();

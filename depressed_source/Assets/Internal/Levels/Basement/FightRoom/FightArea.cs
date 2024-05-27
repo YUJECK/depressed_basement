@@ -13,30 +13,37 @@ namespace FightRoomCode
 
         public Vector2 GetRandomEmptyPoint(float size = 0.5f)
         {
-            int i = 0;
-            while (i < 100)
+            for (int j = 0; j < 300; j++)
             {
-                i++;
                 var point = GetRandomPoint();
                 var result = Physics2D.OverlapCircleAll(point, size);
 
                 if (result.Length > 0)
                 {
-                    size = 0.5f;
-                    continue;
+                    bool nextTry = false;
+                    
+                    for (int index = 0; index < result.Length; index++)
+                    {
+                        if(!result[index].isTrigger)
+                            nextTry = true;
+                    }
+
+                    if(nextTry)
+                        continue;
                 }
 
                 return point;
-                break;
             }
             
             return Vector2.zero;
         }
 
-        private Vector2 GetRandomPoint()
+        private Vector3 GetRandomPoint()
         {
-            return new Vector2(UnityEngine.Random.Range(LeftDownCorner.x, RightDownCorner.x), UnityEngine.Random.Range(LeftDownCorner.y,
-                LeftUpCorner.y));
+            return new Vector3(
+                UnityEngine.Random.Range(LeftDownCorner.x, RightDownCorner.x),
+                UnityEngine.Random.Range(LeftDownCorner.y, LeftUpCorner.y), 
+                0);
         }
     }
 }

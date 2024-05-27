@@ -14,6 +14,12 @@ namespace destructive_code.Scenes
             return Instantiate(original, position, Quaternion.identity, null);
         }
         
+        public virtual TObject Instantiate<TObject>(TObject original, Vector3 position, Transform parent)
+            where TObject : MonoBehaviour
+        {
+            return Instantiate(original, position, Quaternion.identity, parent);
+        }
+        
         public virtual  TObject Instantiate<TObject>(TObject original, Vector3 position, Quaternion rotation)
             where TObject : MonoBehaviour
         {

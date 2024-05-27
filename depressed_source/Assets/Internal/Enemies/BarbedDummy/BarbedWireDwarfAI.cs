@@ -30,11 +30,11 @@ namespace Enemies
                 agent.SetDestination(radar.CurrentTarget.transform.position);
                 agent.isStopped = false;
 
-                if (!spriteRenderer.flipX && radar.CurrentTarget.transform.position.x > transform.position.x)
+                if (!spriteRenderer.flipX && radar.CurrentTarget.transform.position.x < transform.position.x)
                 {
                     spriteRenderer.flipX = true;
                 }
-                if (spriteRenderer.flipX && radar.CurrentTarget.transform.position.x < transform.position.x)
+                if (spriteRenderer.flipX && radar.CurrentTarget.transform.position.x > transform.position.x)
                 {
                     spriteRenderer.flipX = false;
                 }

@@ -25,7 +25,7 @@ namespace Internal.CodeBase.Enemies
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.gameObject == CurrentTarget.gameObject)
+            if (other != null && other.gameObject == CurrentTarget.gameObject)
                 CurrentTarget = null;
         }
     }

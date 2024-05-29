@@ -1,21 +1,26 @@
 using System;
+using CodeBase;
+using Internal.CodeBase.GameObjects;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace destructive_code.Scenes
 {
     public class GameObjectFabric
     {
-        public event Action<GameObject> OnNewGameObject;
-        public event Action<GameObject> OnGameObjectDestroyed;
+        public event Action<Object> OnInstantiated;
+        public event Action<Object> OnDestroyed;
+        public event Action<GameObject> OnInstantiatedGO;
+        public event Action<GameObject> OnDestroyedGO;
         
         public virtual TObject Instantiate<TObject>(TObject original, Vector3 position)
-            where TObject : MonoBehaviour
+            where TObject : Object
         {
             return Instantiate(original, position, Quaternion.identity, null);
         }
         
         public virtual TObject Instantiate<TObject>(TObject original, Vector3 position, Transform parent)
-            where TObject : MonoBehaviour
+            where TObject : Object
         {
             return Instantiate(original, position, Quaternion.identity, parent);
         }
@@ -28,20 +33,39 @@ namespace destructive_code.Scenes
 
         public virtual TObject Instantiate<TObject>(TObject original, Vector3 position, Quaternion rotation,
             Transform parent)
-            where TObject : MonoBehaviour
+            where TObject : Object
         {
-            var newGO = GameObject.Instantiate(original, position, rotation, parent);
+            var instance = GameObject.Instantiate(original, position, rotation, parent);
 
-            Resolver.Instance().InjectGameObject(original.gameObject);
-            
-            OnNewGameObject?.Invoke(newGO.gameObject);
-            
-            return newGO;   
+            OnInstantiated?.Invoke(instance);
+
+            if (instance is GameObject gameObject)
+            {
+                OnInstantiatedGO?.Invoke(gameObject);
+            }
+            else if (instance is Component component)
+            {
+                OnInstantiatedGO?.Invoke(component.gameObject);
+            }
+
+            return instance;   
         }
 
-        public virtual void Destroy(GameObject gameObject)
+        public virtual async void Destroy(GameObject gameObject)
         {
-            OnGameObjectDestroyed?.Invoke(gameObject);
+            if (gameObject.TryGetComponent(out DestroyDelay destroyDelay))
+            {
+                var behaviours = gameObject.GetComponents<DepressedBehaviour>();
+                
+                for (int i = 0; i < behaviours.Length; i++)
+                {
+                    behaviours[i].WillBeDestroyed();
+                }
+                
+                await destroyDelay.Destroy();
+            }
+
+            OnDestroyed?.Invoke(gameObject);
             GameObject.Destroy(gameObject);
         }
     }

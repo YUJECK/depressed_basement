@@ -4,9 +4,6 @@ namespace CodeBase
 {
     public class DepressedBehaviour : MonoBehaviour
     {
-        public virtual void DeUpdate()
-        {
-            
-        }
+        public virtual void WillBeDestroyed() { }
     }
 }

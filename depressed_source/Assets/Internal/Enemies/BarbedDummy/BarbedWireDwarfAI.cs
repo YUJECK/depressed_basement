@@ -13,6 +13,11 @@ namespace Enemies
         private NavMeshAgent agent;
         private TargetRadar radar;
 
+        public override void WillBeDestroyed()
+        {
+            agent.enabled = false;
+        }
+
         private void Start()
         {
             agent = GetComponent<NavMeshAgent>();
@@ -25,7 +30,7 @@ namespace Enemies
 
         private void Update()
         {
-            if (radar.CurrentTarget != null)
+            if (agent.enabled && radar.CurrentTarget != null)
             {
                 agent.SetDestination(radar.CurrentTarget.transform.position);
                 agent.isStopped = false;

@@ -31,8 +31,8 @@ namespace CodeBase.GameStates
             var fightLayer = GameObject.FindObjectOfType<FightGUILayer>();
             SceneSwitcher.CurrentScene.SceneGUI.OpenLayer(fightLayer);
             
-            SceneSwitcher.BasementScene.Fabric.OnNewGameObject += CheckIfEnemySpawned;
-            SceneSwitcher.BasementScene.Fabric.OnGameObjectDestroyed += CheckIfEnemyDied;
+            SceneSwitcher.BasementScene.Fabric.OnInstantiatedGO += CheckIfEnemySpawned;
+            SceneSwitcher.BasementScene.Fabric.OnDestroyedGO += CheckIfEnemyDied;
             
             StartMinerAndTimer();
         }
@@ -41,8 +41,8 @@ namespace CodeBase.GameStates
         {
             ClearEnemies();
             
-            SceneSwitcher.BasementScene.Fabric.OnNewGameObject -= CheckIfEnemySpawned;
-            SceneSwitcher.BasementScene.Fabric.OnGameObjectDestroyed -= CheckIfEnemyDied;
+            SceneSwitcher.BasementScene.Fabric.OnInstantiatedGO -= CheckIfEnemySpawned;
+            SceneSwitcher.BasementScene.Fabric.OnDestroyedGO -= CheckIfEnemyDied;
             
             Miner.Stop();
         }

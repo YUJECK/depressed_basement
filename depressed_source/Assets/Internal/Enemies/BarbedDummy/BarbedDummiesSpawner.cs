@@ -1,5 +1,6 @@
 using FightRoomCode;
 using FightRoomCode.Enemies;
+using Internal.Enemies;
 
 namespace Enemies
 {
@@ -10,7 +11,7 @@ namespace Enemies
             var prefab = enemyPrefabProvider.Get<BarbedWireDwarfAI>();
             var position = fightRoom.Area.GetRandomEmptyPoint(prefab.Size);
 
-            fightRoom.Spawn(prefab, position);
+            fightRoom.Spawn<Enemy>(prefab, position);
         }
     }
 }

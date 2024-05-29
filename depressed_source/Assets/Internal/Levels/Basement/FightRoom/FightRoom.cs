@@ -1,6 +1,7 @@
 using CodeBase.GameStates;
 using CodeBase.Rooms;
 using destructive_code.Scenes;
+using Internal.Enemies;
 using PlayerStuff;
 using UnityEngine;
 
@@ -36,6 +37,16 @@ namespace FightRoomCode
 
         public TObject Spawn<TObject>(TObject prefab, Vector2 position)
             where TObject : MonoBehaviour
+        {
+            var instance = SceneSwitcher.CurrentScene.Fabric.Instantiate(prefab, position, container.transform);
+            
+            if(instance is Enemy enemy)
+                enemy.SetRoom(this);
+
+            return instance;
+        }
+        
+        public GameObject Spawn(GameObject prefab, Vector2 position)
         {
             return SceneSwitcher.CurrentScene.Fabric.Instantiate(prefab, position, container.transform);
         }

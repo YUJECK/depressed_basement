@@ -1,3 +1,4 @@
+using System;
 using destructive_code.Scenes;
 using FightRoomCode;
 using Internal.Enemies;
@@ -7,13 +8,19 @@ namespace CodeBase.Hits
 {
     public class DummyHealth : Health
     {
-        private Animator _animator;
+        [SerializeField] private GameObject deadDummy;
+        [SerializeField] private Animator animator;
+        
         private Enemy enemy;
         
         private void Start()
         {
-            _animator = GetComponentInParent<Animator>();
             enemy = GetComponentInParent<Enemy>();
+        }
+
+        private void OnDestroy()
+        {
+            enemy.FightRoom.Spawn(deadDummy, transform.position);
         }
 
         public override void GeneralHitProcessor(HitData data)
@@ -21,7 +28,7 @@ namespace CodeBase.Hits
             base.GeneralHitProcessor(data);
             
             Hits += data.Damage;            
-            //_animator.SetTrigger("DummyHit");
+            animator.SetTrigger("DummyHit");
 
             if(Hits > 4)
             {

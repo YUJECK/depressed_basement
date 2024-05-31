@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 9
@@ -95,7 +95,49 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BarbedDummyHalf_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 17
+        width: 46
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5218035, y: 0.15300605}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 479afaf60a7404b43b3e326624a7658f
+      internalID: 1527008729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarbedDummyHalf_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 28
+        height: 25
+      alignment: 9
+      pivot: {x: 0.385531, y: 0.44301972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b8768215e09bb346a06f17f76f5c5de
+      internalID: 1380044040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +148,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BarbedDummyHalf_0: 1527008729
+      BarbedDummyHalf_1: 1380044040
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

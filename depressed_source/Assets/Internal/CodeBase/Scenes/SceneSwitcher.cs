@@ -15,8 +15,6 @@ namespace destructive_code.Scenes
 
         private static readonly AsyncSceneLoader Loader = new();
         
-        
-        
         public static void SwitchTo<TScene>(TScene scene)
             where TScene : Scene
         {

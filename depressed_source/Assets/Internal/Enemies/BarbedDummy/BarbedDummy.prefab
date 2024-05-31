@@ -155,7 +155,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2083, y: 0.6362, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5058954090067770231}
@@ -637,7 +637,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1057913030085756037}
-  - component: {fileID: 787591450727097881}
   - component: {fileID: 6315483150897194880}
   - component: {fileID: 973220484392481505}
   - component: {fileID: 7084032103515566418}
@@ -667,28 +666,6 @@ Transform:
   - {fileID: 2321253251778772683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &787591450727097881
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4734402808649856078}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.2
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1.03
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.71
-  m_BaseOffset: 0.09
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!61 &6315483150897194880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -746,7 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d9deb654e4bc34e9198b79036d1a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Size>k__BackingField: 0.42
+  <Size>k__BackingField: 0.79
   spriteRenderer: {fileID: 3390084423235742191}
 --- !u!114 &7084032103515566418
 MonoBehaviour:
@@ -919,7 +896,7 @@ GameObject:
   - component: {fileID: 8390108861859731176}
   - component: {fileID: 7114309503652242293}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: FallParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5860,9 +5837,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18155241}
+  m_Offset: {x: 0.030330896, y: 0.18155265}
   serializedVersion: 2
-  m_Radius: 1.5916829
+  m_Radius: 3.696655
 --- !u!114 &4963352231907548338
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using CodeBase.Items;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace CodeBase.Hits
         public bool Enabled;
         public bool DisableOnHit;
 
+        public event Action OnCollide;
+        
         private WeaponObject weaponObject;
         
         private void Start()
@@ -17,21 +20,16 @@ namespace CodeBase.Hits
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Debug.Log(other.gameObject.name);
-            
-            Debug.Log(other.gameObject.layer);
-            Debug.Log(gameObject.layer);
-            
             if (Enabled && other.gameObject.TryGetComponent(out Health health))
             {
-                Debug.Log("KFDlkjsf");
-                
                 HitHandler.Hit(weaponObject.GetHitData(), health);
 
                 if (DisableOnHit)
                 {
                     Enabled = false;
                 }
+                
+                OnCollide?.Invoke();
             }
         }
     }

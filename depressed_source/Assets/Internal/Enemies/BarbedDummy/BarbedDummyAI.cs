@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 namespace Enemies
 {
-    [RequireComponent(typeof(BarbedWireDwarfAI))]
-    public class BarbedWireDwarfAI : Enemy
+    [RequireComponent(typeof(BarbedDummyAI))]
+    public class BarbedDummyAI : Enemy
     {
         [SerializeField] private SpriteRenderer spriteRenderer; 
         
@@ -19,10 +19,7 @@ namespace Enemies
 
         public override void WillBeDestroyed()
         {
-            if(runCoroutine != null) 
-                StopCoroutine(runCoroutine);
-            if(waitCoroutine != null)
-                StopCoroutine(waitCoroutine);
+            StopAllCoroutines();
         }
 
         private void Start()
@@ -74,6 +71,7 @@ namespace Enemies
             {
                 transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * speed);
                 yield return new WaitForFixedUpdate();
+                
                 speed = speed / (speed * 2) * 10;
             }
 

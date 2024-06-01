@@ -8,7 +8,7 @@ namespace Enemies
     {
         public override void Spawn(FightRoom fightRoom, EnemyPrefabProvider enemyPrefabProvider)
         {
-            var prefab = enemyPrefabProvider.Get<BarbedWireDwarfAI>();
+            var prefab = enemyPrefabProvider.Get<BarbedDummyAI>();
             var position = fightRoom.Area.GetRandomEmptyPoint(prefab.Size);
 
             fightRoom.Spawn<Enemy>(prefab, position);

@@ -17,7 +17,6 @@ namespace FightRoomCode.Enemies
         private void Start()
         {
             SceneSwitcher.OnSceneLoaded += OnLoaded;
-            
         }
 
         private void OnLoaded(Scene arg1, Scene arg2)
@@ -32,6 +31,7 @@ namespace FightRoomCode.Enemies
         public void ResetSpawners()
         {  
             AddSpawner(new BarbedDummiesSpawner());
+            AddSpawner(new KnifyDummySpawner());
         }
 
         public void InvokeRandomSpawnerFrom<TSpawner>()

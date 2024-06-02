@@ -2,7 +2,6 @@ using System.Collections;
 using Internal.CodeBase.Enemies;
 using Internal.Enemies;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Enemies
 {

@@ -1,3 +1,4 @@
+using System;
 using CodeBase.Hits;
 using CodeBase.Items;
 using UnityEngine;
@@ -11,9 +12,15 @@ public class KnifeWeapon : WeaponObject
     private void OnEnable()
     {
         GetComponent<HitOnCollide>().OnCollide += OnCollide;
-        GetComponent<Rigidbody2D>().AddForce(transform.up * speed);
     }
 
+    public void AddForce()
+    {
+        Debug.Log(transform.up * speed);
+        GetComponent<Rigidbody2D>().AddForce(transform.up * speed, ForceMode2D.Impulse);
+        Debug.Log(GetComponent<Rigidbody2D>().velocity);
+    }
+    
     private void OnCollide()
     {
         Destroy(gameObject);

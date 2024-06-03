@@ -14,7 +14,7 @@ namespace CodeBase.Items
 
         private void Update()
         {
-            transform.rotation = Quaternion.Euler(0, 0, AngleCalculator.GetAngle(CursorPosition, transform.position));
+            transform.rotation = Quaternion.Euler(0, 0, AngleCalculator.GetAngle(transform.position, CursorPosition));
         }
     }
 }

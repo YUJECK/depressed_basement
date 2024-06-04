@@ -16,9 +16,7 @@ public class KnifeWeapon : WeaponObject
 
     public void AddForce()
     {
-        Debug.Log(transform.up * speed);
         GetComponent<Rigidbody2D>().AddForce(transform.up * speed, ForceMode2D.Impulse);
-        Debug.Log(GetComponent<Rigidbody2D>().velocity);
     }
     
     private void OnCollide()

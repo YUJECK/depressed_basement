@@ -75,12 +75,17 @@ public class KnifyDummyAI : Enemy
         }
         
         flipper.FlipTo(radar.CurrentTarget.transform);
+
+        var angle = AngleCalculator.GetAngle(knifeSpawnPosition.transform.position, radar.CurrentTarget.transform.position);
+        
+        animator.SetFloat("Angle", angle);
         animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.73f);
+        
+        Debug.Log(angle);
+        
+        yield return new WaitForSeconds(0.33f);
 
         var knifeInstance = FightRoom.Spawn(knife, knifeSpawnPosition.position);
-        var angle = AngleCalculator.GetAngle(knifeInstance.transform.position, radar.CurrentTarget.transform.position);
-        animator.SetFloat("Angle", angle);
         
         knifeInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
         knifeInstance.GetComponent<KnifeWeapon>().AddForce();

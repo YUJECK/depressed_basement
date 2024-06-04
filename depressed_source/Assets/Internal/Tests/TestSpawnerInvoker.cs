@@ -30,7 +30,9 @@ public class TestSpawnerInvoker : MonoBehaviour
         while (gameObject.activeSelf && SceneSwitcher.BasementScene.State is FightState)
         {
             spawner.InvokeRandomSpawnerFrom<KnifyDummySpawner>();
-            await UniTask.WaitForSeconds(18);
+            await UniTask.WaitForSeconds(4.5f);
+            spawner.InvokeRandomSpawnerFrom<BarbedDummiesSpawner>();
+            await UniTask.WaitForSeconds(4.5f);
         }
     }
 }
